@@ -3,6 +3,7 @@ import SpecialPrograms from '../components/SpecialPrograms';
 import { ChevronRight, ArrowRight, Star, Users, Clock, Award, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SplitTitle from '../components/SplitTitle';
+import programsHeroBg from '../assets/Students_participating_in_co-cur…_202606101604.jpeg';
 
 const benefits = [
   { icon: <Star size={24} />, title: 'Builds Confidence', desc: 'Performing, competing, and collaborating in co-curriculars builds self-esteem that lasts a lifetime.' },
@@ -148,6 +149,15 @@ const ProgramsPage = () => {
           padding-top: var(--header-height);
           padding-bottom: 60px;
           overflow: hidden;
+        }
+        .programs-hero {
+          background-image: url(${programsHeroBg});
+          background-size: cover;
+          background-position: center;
+        }
+        .programs-hero .page-hero-overlay {
+          background: linear-gradient(135deg, rgba(10, 25, 47, 0.82) 0%, rgba(10, 25, 47, 0.62) 100%);
+          opacity: 1;
         }
         .page-hero::after {
           content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;

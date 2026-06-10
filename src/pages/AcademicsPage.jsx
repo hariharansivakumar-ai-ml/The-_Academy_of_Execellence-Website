@@ -3,6 +3,7 @@ import Academics from '../components/Academics';
 import { ChevronRight, ArrowRight, CheckCircle, BookOpen, Award, BarChart2, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SplitTitle from '../components/SplitTitle';
+import academicsHeroBg from '../assets/Indian_students_and_teachers_learning_202606101559.jpeg';
 
 const gradeGroups = [
   {
@@ -169,6 +170,15 @@ const AcademicsPage = () => {
           padding-top: var(--header-height);
           padding-bottom: 60px;
           overflow: hidden;
+        }
+        .academics-hero {
+          background-image: url(${academicsHeroBg});
+          background-size: cover;
+          background-position: center;
+        }
+        .academics-hero .page-hero-overlay {
+          background: linear-gradient(135deg, rgba(10, 25, 47, 0.8) 0%, rgba(10, 25, 47, 0.6) 100%);
+          opacity: 1;
         }
         .page-hero::after {
           content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;

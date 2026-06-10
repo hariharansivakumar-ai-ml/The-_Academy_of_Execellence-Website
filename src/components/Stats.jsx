@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import SplitTitle from './SplitTitle';
 
 const Stats = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,7 +41,7 @@ const Stats = () => {
       <div className="container">
         <div className="section-title-wrapper stats-header reveal">
           <span className="section-tag why-tag">Why Choose Us?</span>
-          <h2 className="section-title text-white">Shaping Tomorrow's Leaders Today</h2>
+          <h2 className="section-title text-white"><SplitTitle text="Shaping Tomorrow's Leaders Today" /></h2>
           <p className="section-desc text-white-muted">
             At The Academy of Excellence, every child receives personalized attention and opportunities to grow academically, socially, and emotionally.
           </p>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, X } from 'lucide-react';
+import SplitTitle from './SplitTitle';
 
 const EnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -119,7 +120,7 @@ const EnquiryForm = () => {
       <div className="container">
         <div className="section-title-wrapper reveal">
           <span className="section-tag admission-tag">Admission Enquiry</span>
-          <h2 className="section-title text-white">Begin Your Child's Journey</h2>
+          <h2 className="section-title text-white"><SplitTitle text="Begin Your Child's Journey" /></h2>
           <p className="section-desc text-white-muted">
             We welcome families who share our commitment to quality education and holistic development. Submit an enquiry to start the process.
           </p>
@@ -149,7 +150,7 @@ const EnquiryForm = () => {
 
               {/* Parent Name */}
               <div className="form-group">
-                <label htmlFor="parentName" className="form-label">Parent / Guardian Name *</label>
+                <label htmlFor="parentName" className="form-label">Parent Name *</label>
                 <input
                   type="text"
                   id="parentName"
@@ -206,7 +207,7 @@ const EnquiryForm = () => {
 
               {/* Grade */}
               <div className="form-group form-col-full">
-                <label htmlFor="grade" className="form-label">Grade Applying For *</label>
+                <label htmlFor="grade" className="form-label">Grade / Class *</label>
                 <select
                   id="grade"
                   name="grade"
@@ -228,7 +229,7 @@ const EnquiryForm = () => {
 
               {/* Address */}
               <div className="form-group form-col-full">
-                <label htmlFor="address" className="form-label">Residential Address *</label>
+                <label htmlFor="address" className="form-label">Address *</label>
                 <textarea
                   id="address"
                   name="address"

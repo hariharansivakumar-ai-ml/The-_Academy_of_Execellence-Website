@@ -1,92 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logoImg from '../assets/Logo_TAE.jpeg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
-    { label: 'Home', target: 'home' },
-    { label: 'About Us', target: 'about' },
-    { label: 'Academics', target: 'academics' },
-    { label: 'Special Programs', target: 'programs' },
-    { label: 'Principal\'s Message', target: 'principal' },
-    { label: 'Admissions', target: 'admissions' }
+    { label: 'Home',               path: '/' },
+    { label: 'About Us',           path: '/about' },
+    { label: 'Academics',          path: '/academics' },
+    { label: 'Special Programs',   path: '/programs' },
+    { label: "Principal's Message", path: '/principal' },
+    { label: 'Admissions',         path: '/admissions' },
   ];
 
+  // Scroll detection for navbar background
   useEffect(() => {
     const handleScroll = () => {
-      // Background styling on scroll
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // Active section detection
-      const sections = navItems.map(item => document.getElementById(item.target));
-      const scrollPosition = window.scrollY + 200; // offset for detection
-
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        if (section) {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(navItems[i].target);
-            break;
-          }
-        }
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (targetId) => {
+  // Close mobile menu on route change
+  useEffect(() => {
     setIsOpen(false);
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80; // navbar height
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  // Determine if a nav item is active
+  const isActive = (path) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
+  };
+
+  const handleApplyClick = () => {
+    setIsOpen(false);
+    navigate('/admissions');
   };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="nav-logo" onClick={() => handleNavClick('home')}>
+        <Link to="/" className="nav-logo">
           <img src={logoImg} alt="TAE Logo" className="logo-img" />
           <div className="logo-text">
             <span className="logo-title">THE ACADEMY</span>
             <span className="logo-subtitle">OF EXCELLENCE</span>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="nav-links">
           {navItems.map((item) => (
-            <button
-              key={item.target}
-              onClick={() => handleNavClick(item.target)}
-              className={`nav-link ${activeSection === item.target ? 'active' : ''}`}
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
             >
               {item.label}
-            </button>
+            </Link>
           ))}
-          <button 
-            onClick={() => handleNavClick('admissions')} 
+          <button
+            onClick={handleApplyClick}
             className="btn btn-accent btn-sm nav-cta"
           >
             Apply Now
@@ -94,7 +75,11 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -103,16 +88,16 @@ const Navbar = () => {
       <div className={`mobile-nav ${isOpen ? 'open' : ''}`}>
         <div className="mobile-nav-links">
           {navItems.map((item) => (
-            <button
-              key={item.target}
-              onClick={() => handleNavClick(item.target)}
-              className={`mobile-nav-link ${activeSection === item.target ? 'active' : ''}`}
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`mobile-nav-link ${isActive(item.path) ? 'active' : ''}`}
             >
               {item.label}
-            </button>
+            </Link>
           ))}
-          <button 
-            onClick={() => handleNavClick('admissions')} 
+          <button
+            onClick={handleApplyClick}
             className="btn btn-accent mobile-nav-cta"
           >
             Apply Now
@@ -179,6 +164,7 @@ const Navbar = () => {
           align-items: center;
           gap: 12px;
           cursor: pointer;
+          text-decoration: none;
         }
 
         .logo-img {
@@ -223,8 +209,6 @@ const Navbar = () => {
         }
 
         .nav-link {
-          background: none;
-          border: none;
           font-family: var(--font-sans);
           font-size: 0.9rem;
           font-weight: 600;
@@ -233,6 +217,7 @@ const Navbar = () => {
           position: relative;
           padding: 8px 0;
           transition: color 0.2s ease;
+          text-decoration: none;
         }
 
         .nav-link:hover {
@@ -306,21 +291,25 @@ const Navbar = () => {
         }
 
         .mobile-nav-link {
-          background: none;
-          border: none;
           text-align: left;
           font-family: var(--font-sans);
           font-size: 1.1rem;
           font-weight: 600;
           color: var(--text-primary);
           padding: 8px 0;
-          cursor: pointer;
           border-bottom: 1px solid var(--border-color);
+          text-decoration: none;
+          display: block;
+          transition: color 0.2s ease, border-bottom-color 0.2s ease;
         }
 
         .mobile-nav-link.active {
           color: var(--accent);
           border-bottom-color: var(--accent);
+        }
+
+        .mobile-nav-link:hover {
+          color: var(--primary);
         }
 
         .mobile-nav-cta {

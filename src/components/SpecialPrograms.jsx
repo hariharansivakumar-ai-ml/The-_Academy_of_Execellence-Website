@@ -1,4 +1,5 @@
 import React from 'react';
+import SplitTitle from './SplitTitle';
 import { 
   Trophy, 
   Heart, 
@@ -83,7 +84,7 @@ const SpecialPrograms = () => {
       <div className="container">
         <div className="section-title-wrapper reveal">
           <span className="section-tag">Beyond the Classroom</span>
-          <h2 className="section-title">Our Special Programs</h2>
+          <h2 className="section-title"><SplitTitle text="Our Special Programs" /></h2>
           <p className="section-desc">
             We provide a diverse array of co-curricular programs to ensure all-round growth, building skills that last a lifetime.
           </p>

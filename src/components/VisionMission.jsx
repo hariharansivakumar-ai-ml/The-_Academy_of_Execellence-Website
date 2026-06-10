@@ -1,55 +1,49 @@
 import React from 'react';
-import { Eye, Target, CheckCircle2 } from 'lucide-react';
+import { Eye, Target } from 'lucide-react';
+import SplitTitle from './SplitTitle';
 
 const VisionMission = () => {
-  const missionItems = [
-    "Foster academic excellence through innovative learning experiences.",
-    "Develop confident, responsible, and compassionate individuals.",
-    "Encourage creativity, leadership, and lifelong learning.",
-    "Create a safe, inclusive, and inspiring educational environment.",
-    "Prepare students for global opportunities and future success."
-  ];
-
   return (
     <section id="vision-mission" className="vm-section">
+      {/* Decorative blurred background shapes */}
+      <div className="vm-bg-glow glow-1"></div>
+      <div className="vm-bg-glow glow-2"></div>
+
       <div className="container grid-2 vm-grid">
         {/* Left Column: Vision Card */}
         <div className="vm-vision-col reveal reveal-left">
           <div className="vision-card">
+            <span className="card-watermark">VISION</span>
             <div className="vision-icon-outer">
               <Eye size={36} />
             </div>
-            <h3 className="vm-heading">Our Vision</h3>
+            <h3 className="vm-heading"><SplitTitle text="Our Vision" /></h3>
             <p className="vision-text">
-              To become a leading educational institution that empowers students to excel academically, think critically, and contribute positively to society.
+              To be a leading institution of learning that nurtures confident, compassionate, and globally competent individuals who make meaningful contributions to society.
             </p>
             <div className="card-decoration">
-              <span className="dec-line"></span>
-              <span className="dec-dot"></span>
-              <span className="dec-line"></span>
+              <span className="dec-line gold-line"></span>
+              <span className="dec-dot gold-dot"></span>
+              <span className="dec-line gold-line"></span>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Mission List */}
+        {/* Right Column: Mission Card */}
         <div className="vm-mission-col reveal reveal-right reveal-delay-2">
           <div className="mission-card">
-            <div className="mission-header">
-              <div className="mission-icon-outer">
-                <Target size={36} />
-              </div>
-              <h3 className="vm-heading">Our Mission</h3>
+            <span className="card-watermark">MISSION</span>
+            <div className="mission-icon-outer">
+              <Target size={36} />
             </div>
-            
-            <div className="mission-list">
-              {missionItems.map((item, index) => (
-                <div key={index} className="mission-item">
-                  <div className="mission-marker">
-                    <CheckCircle2 size={20} className="marker-icon" />
-                  </div>
-                  <p className="mission-text-item">{item}</p>
-                </div>
-              ))}
+            <h3 className="vm-heading"><SplitTitle text="Our Mission" /></h3>
+            <p className="mission-text">
+              To inspire, educate, and empower every student to achieve their highest potential through excellence in academics, character development, innovation, and lifelong learning.
+            </p>
+            <div className="card-decoration">
+              <span className="dec-line teal-line"></span>
+              <span className="dec-dot teal-dot"></span>
+              <span className="dec-line teal-line"></span>
             </div>
           </div>
         </div>
@@ -57,21 +51,45 @@ const VisionMission = () => {
 
       <style>{`
         .vm-section {
-          background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+          background: var(--bg-secondary);
           position: relative;
           overflow: hidden;
+          padding: 120px 24px;
+        }
+
+        /* Background blur glows */
+        .vm-bg-glow {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          border-radius: 50%;
+          filter: blur(120px);
+          opacity: 0.15;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .vm-bg-glow.glow-1 {
+          background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+          top: -100px;
+          left: -100px;
+        }
+        .vm-bg-glow.glow-2 {
+          background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+          bottom: -100px;
+          right: -100px;
         }
 
         .vm-grid {
-          gap: 60px;
+          position: relative;
+          z-index: 2;
+          gap: 32px;
           align-items: stretch;
         }
 
-        /* Vision Card Styles */
-        .vision-card {
-          background-color: var(--primary);
-          color: #ffffff;
-          border-radius: 12px;
+        /* Vision & Mission Card Base Styles */
+        .vision-card, .mission-card {
+          background: linear-gradient(135deg, rgba(10, 25, 47, 0.95) 0%, rgba(15, 34, 64, 0.95) 100%);
+          border-radius: 24px;
           padding: 60px 48px;
           height: 100%;
           display: flex;
@@ -79,153 +97,167 @@ const VisionMission = () => {
           align-items: center;
           justify-content: center;
           text-align: center;
-          box-shadow: var(--shadow-premium);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           position: relative;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .vision-card::before {
-          content: '';
+        .vision-card:hover, .mission-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        .vision-card:hover {
+          border-color: rgba(var(--accent-rgb), 0.35);
+        }
+
+        .mission-card:hover {
+          border-color: rgba(13, 148, 136, 0.35);
+        }
+
+        /* Watermark text behind content */
+        .card-watermark {
           position: absolute;
-          inset: 12px;
-          border: 1px dashed rgba(217, 119, 6, 0.3);
-          border-radius: 8px;
+          font-family: 'Outfit', 'Inter', var(--font-sans);
+          font-size: 8rem;
+          font-weight: 950;
+          color: rgba(255, 255, 255, 0.02);
+          letter-spacing: 0.15em;
           pointer-events: none;
+          z-index: 0;
+          user-select: none;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
 
-        .vision-icon-outer {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          background-color: rgba(217, 119, 6, 0.15);
-          color: var(--accent);
+        /* Icon styling */
+        .vision-icon-outer, .mission-icon-outer {
+          width: 84px;
+          height: 84px;
+          border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 24px;
-          box-shadow: 0 0 20px rgba(217, 119, 6, 0.2);
+          margin-bottom: 28px;
+          position: relative;
+          z-index: 1;
+          transition: all 0.3s ease;
+          border: 1px solid;
+        }
+
+        .vision-icon-outer {
+          background-color: rgba(var(--accent-rgb), 0.1);
+          color: var(--accent);
+          border-color: rgba(var(--accent-rgb), 0.25);
+          box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.1);
+        }
+
+        .mission-icon-outer {
+          background-color: rgba(13, 148, 136, 0.1);
+          color: var(--secondary);
+          border-color: rgba(13, 148, 136, 0.25);
+          box-shadow: 0 0 20px rgba(13, 148, 136, 0.1);
+        }
+
+        .vision-card:hover .vision-icon-outer {
+          background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+          color: #ffffff;
+          transform: scale(1.1) rotate(5deg);
+          box-shadow: 0 10px 25px rgba(var(--accent-rgb), 0.4);
+          border-color: transparent;
+        }
+
+        .mission-card:hover .mission-icon-outer {
+          background: linear-gradient(135deg, var(--secondary) 0%, #14b8a6 100%);
+          color: #ffffff;
+          transform: scale(1.1) rotate(-5deg);
+          box-shadow: 0 10px 25px rgba(13, 148, 136, 0.4);
+          border-color: transparent;
         }
 
         .vm-heading {
+          font-family: 'Outfit', 'Inter', var(--font-sans);
           font-size: 2.25rem;
-          margin-bottom: 20px;
-          letter-spacing: 0.02em;
-        }
-
-        .vision-card .vm-heading {
+          font-weight: 700;
           color: #ffffff;
+          margin-bottom: 20px;
+          letter-spacing: -0.01em;
+          position: relative;
+          z-index: 1;
         }
 
-        .vision-text {
-          font-size: 1.25rem;
-          line-height: 1.7;
+        .vision-text, .mission-text {
+          font-size: 1.15rem;
+          line-height: 1.75;
           font-family: var(--font-sans);
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.9);
-          max-width: 420px;
-          margin-bottom: 24px;
+          color: rgba(255, 255, 255, 0.85);
+          max-width: 440px;
+          margin-bottom: 32px;
+          position: relative;
+          z-index: 1;
         }
 
         .card-decoration {
           display: flex;
           align-items: center;
           gap: 8px;
-          width: 150px;
+          width: 140px;
+          position: relative;
+          z-index: 1;
         }
 
         .dec-line {
           height: 1px;
           flex-grow: 1;
-          background-color: rgba(217, 119, 6, 0.4);
+        }
+
+        .gold-line {
+          background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.5), transparent);
+        }
+
+        .teal-line {
+          background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.5), transparent);
         }
 
         .dec-dot {
           width: 6px;
           height: 6px;
+          border-radius: 50%;
+        }
+
+        .gold-dot {
           background-color: var(--accent);
-          border-radius: 50%;
+          box-shadow: 0 0 10px var(--accent);
         }
 
-        /* Mission Card Styles */
-        .mission-card {
-          background-color: var(--bg-primary);
-          border-radius: 12px;
-          padding: 50px 40px;
-          height: 100%;
-          border: 1px solid var(--border-color);
-          box-shadow: var(--shadow-md);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .mission-header {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          margin-bottom: 32px;
-          border-bottom: 1px solid var(--border-color);
-          padding-bottom: 20px;
-        }
-
-        .mission-icon-outer {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          background-color: rgba(10, 25, 47, 0.04);
-          color: var(--primary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .mission-card .vm-heading {
-          color: var(--primary);
-          margin-bottom: 0;
-        }
-
-        .mission-list {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .mission-item {
-          display: flex;
-          gap: 16px;
-          text-align: left;
-        }
-
-        .mission-marker {
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-
-        .marker-icon {
-          color: var(--accent);
-        }
-
-        .mission-text-item {
-          font-size: 1.05rem;
-          color: var(--text-secondary);
-          line-height: 1.5;
+        .teal-dot {
+          background-color: var(--secondary);
+          box-shadow: 0 0 10px var(--secondary);
         }
 
         @media (max-width: 992px) {
-          .vision-card {
-            padding: 40px 24px;
+          .vision-card, .mission-card {
+            padding: 50px 32px;
           }
-          .mission-card {
-            padding: 40px 24px;
+          .card-watermark {
+            font-size: 6rem;
           }
         }
 
         @media (max-width: 768px) {
           .vm-grid {
-            gap: 32px;
+            gap: 24px;
+            grid-template-columns: 1fr;
           }
           .vm-heading {
-            font-size: 1.75rem;
+            font-size: 1.85rem;
+          }
+          .vision-text, .mission-text {
+            font-size: 1.05rem;
           }
         }
       `}</style>

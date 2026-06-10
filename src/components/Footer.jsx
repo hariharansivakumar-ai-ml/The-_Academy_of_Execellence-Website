@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   GraduationCap, 
   MapPin, 
@@ -9,29 +10,13 @@ import {
 
 const Footer = () => {
   const quickLinks = [
-    { label: 'Home', target: 'home' },
-    { label: 'About Us', target: 'about' },
-    { label: 'Academics', target: 'academics' },
-    { label: 'Special Programs', target: 'programs' },
-    { label: 'Principal\'s Message', target: 'principal' },
-    { label: 'Admissions', target: 'admissions' }
+    { label: 'Home',                path: '/' },
+    { label: 'About Us',            path: '/about' },
+    { label: 'Academics',           path: '/academics' },
+    { label: 'Special Programs',    path: '/programs' },
+    { label: "Principal's Message", path: '/principal' },
+    { label: 'Admissions',          path: '/admissions' }
   ];
-
-  const handleScrollTo = (targetId) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -45,16 +30,16 @@ const Footer = () => {
       <div className="container footer-grid">
         {/* Column 1: Info & Tagline */}
         <div className="footer-col info-col">
-          <div className="footer-logo" onClick={handleScrollToTop}>
+          <Link to="/" className="footer-logo">
             <GraduationCap className="footer-logo-icon" size={28} />
             <div className="logo-text">
               <span className="logo-title text-white">THE ACADEMY</span>
               <span className="logo-subtitle">OF EXCELLENCE</span>
             </div>
-          </div>
+          </Link>
           <h4 className="footer-tagline">Excellence in Education. Excellence in Life.</h4>
           <p className="footer-desc">
-            The Academy of Excellence is dedicated to nurturing young minds through innovative learning, character development, and academic excellence.
+            We would be delighted to answer your questions and assist you with admissions and school information. Reach out to us and discover how The Academy Of Excellence can help your child build a strong foundation for a successful future.
           </p>
           <div className="footer-socials">
             <a href="#facebook" className="social-icon" aria-label="Facebook">
@@ -90,12 +75,12 @@ const Footer = () => {
           <ul className="footer-links-list">
             {quickLinks.map((link, idx) => (
               <li key={idx} className="footer-link-item">
-                <button 
-                  onClick={() => handleScrollTo(link.target)}
+                <Link 
+                  to={link.path}
                   className="footer-nav-link"
                 >
                   {link.label}
-                </button>
+                </Link>
               </li>
             ))}
           </ul>
@@ -244,17 +229,16 @@ const Footer = () => {
         }
 
         .footer-nav-link {
-          background: none;
-          border: none;
+          display: block;
+          text-decoration: none;
           color: rgba(255, 255, 255, 0.8);
           font-family: 'Outfit', 'Inter', var(--font-sans);
           font-size: 14px;
           font-weight: 300;
-          line-height: 14px;
+          line-height: 1.5;
           cursor: pointer;
           transition: all 0.2s ease;
           padding: 0;
-          text-align: left;
         }
 
         .footer-nav-link:hover {

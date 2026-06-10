@@ -1,46 +1,29 @@
-import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import AcademicsPage from './pages/AcademicsPage';
+import ProgramsPage from './pages/ProgramsPage';
+import PrincipalPage from './pages/PrincipalPage';
+import AdmissionsPage from './pages/AdmissionsPage';
 
 function App() {
-  useEffect(() => {
-    // Scroll reveal animation trigger logic
-    const revealCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          // Once animated, we don't need to observe it anymore
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-
-    const observerOptions = {
-      root: null, // use the viewport
-      rootMargin: '0px',
-      threshold: 0.15 // trigger when 15% of the element is visible
-    };
-
-    const observer = new IntersectionObserver(revealCallback, observerOptions);
-    const revealElements = document.querySelectorAll('.reveal');
-
-    revealElements.forEach(el => observer.observe(el));
-
-    // Cleanup observer on unmount
-    return () => {
-      revealElements.forEach(el => observer.unobserve(el));
-    };
-  }, []);
-
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
       <main>
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/academics" element={<AcademicsPage />} />
+          <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/principal" element={<PrincipalPage />} />
+          <Route path="/admissions" element={<AdmissionsPage />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

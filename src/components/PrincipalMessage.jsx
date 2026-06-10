@@ -1,5 +1,6 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
+import SplitTitle from './SplitTitle';
 
 const PrincipalMessage = () => {
   return (
@@ -37,7 +38,7 @@ const PrincipalMessage = () => {
         <div className="principal-text-col reveal reveal-right reveal-delay-2">
           <div className="message-header-box">
             <span className="section-tag principal-tag">Principal's Message</span>
-            <h2 className="section-title text-left-align">Nurturing Potential, Inspiring Success</h2>
+            <h2 className="section-title text-left-align"><SplitTitle text="Nurturing Potential, Inspiring Success" /></h2>
           </div>
 
           <div className="message-quote-box">

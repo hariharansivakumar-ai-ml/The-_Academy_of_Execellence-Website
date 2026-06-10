@@ -1,23 +1,10 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import heroVideo from '../assets/Hero Home.mp4';
 
 const Hero = () => {
-  const handleScrollTo = (targetId) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <section id="home" className="hero-section">
@@ -44,7 +31,7 @@ const Hero = () => {
           
           <h1 className="hero-title">
             Empowering Minds. <br />
-            <span className="text-highlight-gold">Inspiring Futures.</span>
+            <span className="title-second-half">Inspiring Futures.</span>
           </h1>
           
           <h3 className="hero-subtitle">
@@ -57,13 +44,13 @@ const Hero = () => {
 
           <div className="hero-actions">
             <button 
-              onClick={() => handleScrollTo('admissions')} 
+              onClick={() => navigate('/admissions')} 
               className="btn btn-accent hero-btn"
             >
               Apply for Admission <ArrowRight size={18} />
             </button>
             <button 
-              onClick={() => handleScrollTo('about')} 
+              onClick={() => navigate('/about')} 
               className="btn btn-outline-white hero-btn"
             >
               Explore Our Campus

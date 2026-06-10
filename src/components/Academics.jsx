@@ -1,4 +1,5 @@
 import React from 'react';
+import SplitTitle from './SplitTitle';
 import { 
   FileText, 
   Monitor, 
@@ -59,7 +60,7 @@ const Academics = () => {
       <div className="container">
         <div className="section-title-wrapper reveal">
           <span className="section-tag">Academic Excellence</span>
-          <h2 className="section-title">A Future-Ready Learning Experience</h2>
+          <h2 className="section-title"><SplitTitle text="A Future-Ready Learning Experience" /></h2>
           <p className="section-desc">
             Our curriculum balances academic rigor with practical learning, creativity, and personal development to prepare students for tomorrow's opportunities.
           </p>

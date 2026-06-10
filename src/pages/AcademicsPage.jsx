@@ -180,10 +180,6 @@ const AcademicsPage = () => {
           background: linear-gradient(135deg, rgba(10, 25, 47, 0.8) 0%, rgba(10, 25, 47, 0.6) 100%);
           opacity: 1;
         }
-        .page-hero::after {
-          content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
-          background: linear-gradient(to top, var(--bg-secondary), transparent);
-        }
         .page-hero-overlay { position: absolute; inset: 0; opacity: 0.04; background-image: radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 28px 28px; }
         .page-hero-content { position: relative; z-index: 5; max-width: var(--container-max-width); width: 100%; margin: 0 auto; padding: 0 24px; }
         .page-breadcrumb { display: flex; align-items: center; gap: 6px; margin-bottom: 16px; }

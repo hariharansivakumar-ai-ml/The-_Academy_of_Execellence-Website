@@ -212,19 +212,16 @@ const AdmissionsPage = () => {
       </section>
 
       <style>{`
-        .admissions-hero {
-          background: linear-gradient(135deg, var(--primary) 0%, rgba(217,119,6,0.2) 50%, var(--primary-dark) 100%);
-        }
         /* ── Shared Page Hero ── */
         .page-hero {
-          position: relative; height: 320px;
-          display: flex; align-items: flex-end;
-          padding-bottom: 60px; overflow: hidden; margin-top: var(--header-height);
-        }
-        .page-hero::before {
-          content: ''; position: absolute; inset: 0;
-          background-image: radial-gradient(circle at 80% 20%, rgba(217,119,6,0.12) 0%, transparent 50%),
-                            radial-gradient(circle at 20% 80%, rgba(13,148,136,0.08) 0%, transparent 50%);
+          position: relative;
+          height: 380px;
+          background-color: var(--primary);
+          display: flex;
+          align-items: flex-end;
+          padding-top: var(--header-height);
+          padding-bottom: 60px;
+          overflow: hidden;
         }
         .page-hero::after {
           content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;

@@ -66,11 +66,6 @@ const AboutPage = () => {
         <div className="container about-hero-container">
           {/* Centered Content */}
           <div className="about-hero-content-center">
-            <nav className="about-hero-breadcrumb" aria-label="Breadcrumb">
-              <Link to="/" className="about-breadcrumb-link">Home</Link>
-              <ChevronRight size={12} className="about-breadcrumb-sep" />
-              <span className="about-breadcrumb-current">About Us</span>
-            </nav>
             <div className="about-hero-badge">
               <Sparkles size={16} className="badge-icon" />
               <span>About Us</span>

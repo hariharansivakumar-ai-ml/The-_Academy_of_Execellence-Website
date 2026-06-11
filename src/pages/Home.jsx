@@ -258,21 +258,21 @@ const Home = () => {
         .bento-featured {
           grid-column: 1;
           grid-row: 1;
-          background: linear-gradient(160deg, var(--primary) 0%, var(--primary-light) 60%, #1a3a5c 100%);
+          background: linear-gradient(160deg, var(--accent) 0%, var(--accent-hover) 60%, #9c7a23 100%);
           padding: 52px 44px;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
           min-height: 480px;
-          border: 1px solid rgba(255,255,255,0.06);
+          border: 1px solid rgba(10, 25, 47, 0.08);
         }
         .bento-featured:hover { transform: translateY(-6px) scale(1.01); }
         .bento-featured-bg {
           position: absolute;
           inset: 0;
           background-image:
-            radial-gradient(circle at 90% 10%, rgba(217,119,6,0.18) 0%, transparent 55%),
-            radial-gradient(circle at 10% 90%, rgba(13,148,136,0.12) 0%, transparent 55%);
+            radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.25) 0%, transparent 55%),
+            radial-gradient(circle at 10% 90%, rgba(10, 25, 47, 0.08) 0%, transparent 55%);
           pointer-events: none;
         }
         .bento-feat-tag {
@@ -281,7 +281,7 @@ const Home = () => {
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.2em;
-          color: var(--accent);
+          color: var(--primary);
           margin-bottom: 20px;
           position: relative;
           z-index: 2;
@@ -289,24 +289,25 @@ const Home = () => {
         .bento-feat-icon {
           width: 72px; height: 72px;
           border-radius: 18px;
-          background: rgba(255,255,255,0.08);
-          border: 1px solid rgba(255,255,255,0.12);
-          color: #fff;
+          background: rgba(10, 25, 47, 0.06);
+          border: 1px solid rgba(10, 25, 47, 0.12);
+          color: var(--primary);
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 28px;
           position: relative; z-index: 2;
           transition: all 0.35s ease;
         }
         .bento-featured:hover .bento-feat-icon {
-          background: var(--accent);
-          border-color: var(--accent);
+          background: var(--primary);
+          border-color: var(--primary);
+          color: #fff;
           transform: rotate(-8deg) scale(1.08);
         }
         .bento-feat-title {
           font-family: var(--font-sans);
           font-size: 2.2rem;
           font-weight: 800;
-          color: #fff;
+          color: var(--primary);
           letter-spacing: -0.02em;
           margin-bottom: 14px;
           position: relative; z-index: 2;
@@ -314,7 +315,7 @@ const Home = () => {
         }
         .bento-feat-desc {
           font-size: 0.95rem;
-          color: rgba(255,255,255,0.72);
+          color: rgba(10, 25, 47, 0.8);
           line-height: 1.65;
           margin-bottom: 28px;
           position: relative; z-index: 2;
@@ -327,7 +328,7 @@ const Home = () => {
           font-family: var(--font-sans);
           font-size: 0.88rem;
           font-weight: 700;
-          color: var(--accent);
+          color: var(--primary);
           position: relative; z-index: 2;
           transition: gap 0.2s ease;
         }
@@ -335,9 +336,9 @@ const Home = () => {
         .bento-feat-badge {
           position: absolute;
           top: 32px; right: 32px;
-          background: rgba(255,255,255,0.08);
-          border: 1px solid rgba(255,255,255,0.14);
-          color: rgba(255,255,255,0.7);
+          background: rgba(10, 25, 47, 0.06);
+          border: 1px solid rgba(10, 25, 47, 0.12);
+          color: rgba(10, 25, 47, 0.7);
           font-family: var(--font-sans);
           font-size: 0.75rem;
           font-weight: 700;

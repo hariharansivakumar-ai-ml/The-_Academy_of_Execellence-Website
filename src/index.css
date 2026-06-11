@@ -231,6 +231,15 @@ section {
   font-style: italic;
 }
 
+/* Text color utilities */
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-white-muted {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
 
 /* Button Component Styles */
 .btn {

@@ -16,6 +16,7 @@ const Navbar = () => {
     { label: 'Special Programs',   path: '/programs' },
     { label: "Principal's Message", path: '/principal' },
     { label: 'Admissions',         path: '/admissions' },
+    { label: 'Blogs',              path: '/blog' },
   ];
 
   // Scroll detection for navbar background

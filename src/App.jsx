@@ -7,6 +7,8 @@ import AcademicsPage from './pages/AcademicsPage';
 import ProgramsPage from './pages/ProgramsPage';
 import PrincipalPage from './pages/PrincipalPage';
 import AdmissionsPage from './pages/AdmissionsPage';
+import BlogListPage from './pages/BlogListPage';
+import BlogDetailPage from './pages/BlogDetailPage';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/principal" element={<PrincipalPage />} />
           <Route path="/admissions" element={<AdmissionsPage />} />
+          <Route path="/blog" element={<BlogListPage />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
         </Routes>
       </main>
       <Footer />

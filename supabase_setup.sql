@@ -152,7 +152,7 @@ Instead of monitoring kids from a distance, play games together, watch tutorials
 > — *Christian Lous Lange*
 
 By creating collaborative rules and fostering digital mindfulness, we can guide our children to use technology as an empowering tool rather than a distraction.',
-    'Screens are everywhere. Read our counselor\'s guide on setting boundaries, categorizing screen time, and encouraging active creation over passive consumption.',
+    'Screens are everywhere. Read our counselor''s guide on setting boundaries, categorizing screen time, and encouraging active creation over passive consumption.',
     'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
     'Parents Guide',
     'Ms. Priya Sharma, Senior Student Counselor',
